@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070707">
+    <title>Cash Hall — Play & Win</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="landing-header">
+        <div class="mini-logo">
+            <div class="mini-logo-coin">₦</div>
+            <span>CASH <b>HALL</b></span>
+        </div>
+
+        <a href="home.html" class="login-link">LOGIN</a>
+    </header>
+
+    <main class="landing">
+
+        <section class="hero">
+
+            <div class="hero-badge">
+                ✦ WELCOME TO CASH HALL ✦
+            </div>
+
+            <h1>
+                PLAY.<br>
+                <span>WIN.</span><br>
+                ENJOY.
+            </h1>
+
+            <p>
+                Enter the hall, play exciting games and
+                experience the Cash Hall gaming world.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="home.html" class="gold-button">
+                    START PLAYING
+                    <span>→</span>
+                </a>
+
+                <a href="#games" class="dark-button">
+                    VIEW GAMES
+                </a>
+            </div>
+
+        </section>
+
+        <section class="jackpot-card">
+
+            <div class="jackpot-label">
+                🔥 LIVE JACKPOT
+            </div>
+
+            <div id="jackpot" class="jackpot">
+                ₦1,284,650
+            </div>
+
+            <p>Players are currently winning</p>
+
+        </section>
+
+        <section id="games" class="games-section">
+
+            <div class="section-heading">
+                <span>OUR GAMES</span>
+                <h2>Choose Your Game</h2>
+            </div>
+
+            <div class="game-grid">
+
+                <a href="lucky200.html" class="game-card">
+                    <div class="game-icon">🎯</div>
+                    <h3>Lucky 200</h3>
+                    <p>Pick your lucky number.</p>
+                    <span class="play-now">PLAY →</span>
+                </a>
+
+                <a href="cards.html" class="game-card">
+                    <div class="game-icon">🃏</div>
+                    <h3>Card Shuffle</h3>
+                    <p>Find the winning card.</p>
+                    <span class="play-now">PLAY →</span>
+                </a>
+
+                <a href="whot/whot.html" class="game-card">
+                    <div class="game-icon">♠</div>
+                    <h3>Naija Whot</h3>
+                    <p>Challenge the computer.</p>
+                    <span class="play-now">PLAY →</span>
+                </a>
+
+            </div>
+
+        </section>
+
+        <section class="winner-section">
+
+            <div class="section-heading">
+                <span>LIVE ACTIVITY</span>
+                <h2>Recent Winners</h2>
+            </div>
+
+            <div id="winnerList" class="winner-list">
+
+                <div class="winner">
+                    <div class="winner-avatar">A</div>
+                    <div>
+                        <strong>081•••4321</strong>
+                        <small>Lucky 200</small>
+                    </div>
+                    <b>+2,000 🪙</b>
+                </div>
+
+                <div class="winner">
+                    <div class="winner-avatar">C</div>
+                    <div>
+                        <strong>070•••9812</strong>
+                        <small>Card Shuffle</small>
+                    </div>
+                    <b>+1,000 🪙</b>
+                </div>
+
+                <div class="winner">
+                    <div class="winner-avatar">E</div>
+                    <div>
+                        <strong>090•••2468</strong>
+                        <small>Naija Whot</small>
+                    </div>
+                    <b>+3,500 🪙</b>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="cta-section">
+
+            <div class="cta-logo">₦</div>
+
+            <h2>Ready to enter the hall?</h2>
+
+            <p>
+                Create your Cash Hall account and start playing.
+            </p>
+
+            <a href="home.html" class="gold-button">
+                ENTER CASH HALL
+                <span>→</span>
+            </a>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-logo">CASH <span>HALL</span></div>
+        <p>© 2026 Cash Hall. Play responsibly.</p>
+    </footer>
+
+    <script>
+        let jackpot = 1284650;
+
+        function updateJackpot() {
+            const change = Math.floor(Math.random() * 900) + 100;
+            jackpot += change;
+
+            document.getElementById("jackpot").textContent =
+                "₦" + jackpot.toLocaleString("en-NG");
+        }
+
+        setInterval(updateJackpot, 4000);
+    </script>
+
+</body>
+  </html>
