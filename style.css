@@ -516,4 +516,217 @@ footer {
     .dark-button {
         width: 100%;
     }
+    /* =========================
+   APP / DASHBOARD
+========================= */
+
+.app-header {
+    height: 65px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #222;
+    background: #080808;
+}
+
+.app-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--gold);
+    font-weight: 900;
+}
+
+.app-logo span {
+    color: white;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.logout-btn {
+    background: transparent;
+    border: 1px solid #333;
+    color: #aaa;
+    padding: 7px 12px;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.dashboard {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px 18px 100px;
+}
+
+.welcome p {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.welcome h1 {
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.balance-card {
+    margin-top: 25px;
+    padding: 25px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border-radius: 16px;
+    background:
+        linear-gradient(135deg, #26200d, #111);
+    border: 1px solid rgba(245,197,66,.3);
+}
+
+.balance-card small {
+    display: block;
+    color: #aaa;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.balance-card strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 23px;
+    color: var(--gold);
+}
+
+.dashboard-actions {
+    display: grid;
+    gap: 10px;
+    margin: 25px 0 45px;
+}
+
+.dashboard-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    background: #131313;
+    border: 1px solid #272727;
+    border-radius: 12px;
+}
+
+.dashboard-card > span {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #222;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+.dashboard-card div {
+    flex: 1;
+}
+
+.dashboard-card b,
+.dashboard-card small {
+    display: block;
+}
+
+.dashboard-card b {
+    font-size: 14px;
+}
+
+.dashboard-card small {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 3px;
+}
+
+.dashboard-card > strong {
+    color: var(--gold);
+    font-size: 24px;
+}
+
+.dashboard-games {
+    margin-top: 20px;
+}
+
+.dashboard-game-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.dashboard-game {
+    position: relative;
+    padding: 20px;
+    min-height: 155px;
+    border-radius: 15px;
+    background: #141414;
+    border: 1px solid #292929;
+    overflow: hidden;
+    transition: .2s ease;
+}
+
+.dashboard-game:hover {
+    border-color: rgba(245,197,66,.5);
+    transform: translateY(-2px);
+}
+
+.big-game-icon {
+    font-size: 36px;
+    margin-bottom: 14px;
+}
+
+.dashboard-game h3 {
+    font-size: 17px;
+}
+
+.dashboard-game p {
+    color: var(--muted);
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.dashboard-game > span {
+    position: absolute;
+    right: 18px;
+    bottom: 18px;
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(10,10,10,.96);
+    border-top: 1px solid #292929;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+}
+
+.bottom-nav a {
+    width: 33%;
+    text-align: center;
+    color: #777;
+    font-size: 9px;
+}
+
+.bottom-nav span {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 3px;
+}
+
+.bottom-nav a.active {
+    color: var(--gold);
+}
 }
