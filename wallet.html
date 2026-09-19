@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070707">
+    <title>Cash Hall — Wallet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="app-header">
+    <a href="home.html" class="app-logo">
+        ₦ <span>CASH HALL</span>
+    </a>
+
+    <button class="logout-btn" onclick="logout()">LOGOUT</button>
+</header>
+
+<main class="wallet-page">
+
+    <div class="page-title">
+        <span>YOUR MONEY</span>
+        <h1>Wallet</h1>
+    </div>
+
+    <section class="wallet-balance">
+
+        <div>
+            <small>COIN BALANCE</small>
+            <strong id="walletCoins">0 🪙</strong>
+        </div>
+
+        <div>
+            <small>WITHDRAWABLE</small>
+            <strong id="walletWithdrawable">0 🪙</strong>
+        </div>
+
+    </section>
+
+
+    <!-- DEPOSIT -->
+
+    <section class="wallet-section">
+
+        <div class="wallet-section-title">
+            <span>01</span>
+            <div>
+                <h2>Buy Coins</h2>
+                <p>Send your deposit to the account below.</p>
+            </div>
+        </div>
+
+        <div class="bank-card">
+
+            <div class="bank-header">
+                <span>DEPOSIT ACCOUNT</span>
+                <b>KUDA BANK</b>
+            </div>
+
+            <div class="bank-detail">
+                <small>ACCOUNT NAME</small>
+                <strong>ODOH ESSIEN UGOCHUKWU</strong>
+            </div>
+
+            <div class="bank-detail">
+                <small>ACCOUNT NUMBER</small>
+                <strong class="account-number">
+                    2086182557
+                </strong>
+            </div>
+
+            <div class="bank-warning">
+                After making your payment, contact the Cash Hall
+                admin for manual coin credit.
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- WITHDRAW -->
+
+    <section class="wallet-section">
+
+        <div class="wallet-section-title">
+            <span>02</span>
+            <div>
+                <h2>Withdraw</h2>
+                <p>Submit a withdrawal request.</p>
+            </div>
+        </div>
+
+        <form id="withdrawForm" class="withdraw-form">
+
+            <label>Account Name</label>
+
+            <input
+                type="text"
+                id="withdrawName"
+                placeholder="Account name"
+                required
+            >
+
+            <label>Account Number</label>
+
+            <input
+                type="text"
+                id="withdrawAccount"
+                placeholder="Bank account number"
+                inputmode="numeric"
+                required
+            >
+
+            <label>Amount in Coins</label>
+
+            <input
+                type="number"
+                id="withdrawAmount"
+                placeholder="Enter amount"
+                min="1"
+                required
+            >
+
+            <p class="withdraw-note">
+                Your request will be reviewed by the Cash Hall admin.
+            </p>
+
+            <p id="withdrawMessage" class="form-message"></p>
+
+            <button class="auth-button" type="submit">
+                REQUEST WITHDRAWAL
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<nav class="bottom-nav">
+
+    <a href="home.html">
+        <span>⌂</span>
+        Home
+    </a>
+
+    <a href="wallet.html" class="active">
+        <span>₦</span>
+        Wallet
+    </a>
+
+    <a href="profile.html">
+        <span>●</span>
+        Profile
+    </a>
+
+</nav>
+
+<script src="app.js"></script>
+
+</body>
+</html>
