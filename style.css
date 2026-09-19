@@ -729,4 +729,127 @@ footer {
 .bottom-nav a.active {
     color: var(--gold);
 }
+/* =========================
+   AUTHENTICATION
+========================= */
+
+.auth-page {
+    min-height: 100vh;
+    padding: 35px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 20%, #211c0b 0%, #080808 45%, #000 100%);
 }
+
+.auth-logo {
+    color: var(--gold);
+    font-weight: 900;
+    font-size: 25px;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+.auth-logo span {
+    color: white;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 28px 22px;
+    border-radius: 18px;
+    background: #111;
+    border: 1px solid #292929;
+    box-shadow: 0 20px 70px rgba(0,0,0,.4);
+}
+
+.auth-heading {
+    margin-bottom: 25px;
+}
+
+.auth-heading > span {
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.auth-heading h1 {
+    font-size: 30px;
+    margin-top: 7px;
+}
+
+.auth-heading p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-card label {
+    color: #ccc;
+    font-size: 11px;
+    margin-bottom: 7px;
+    margin-top: 15px;
+}
+
+.auth-card input {
+    width: 100%;
+    height: 48px;
+    padding: 0 13px;
+    color: white;
+    background: #080808;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    outline: none;
+}
+
+.auth-card input:focus {
+    border-color: var(--gold);
+}
+
+.auth-button {
+    height: 50px;
+    margin-top: 20px;
+    border: 0;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ffe58a, #c79618);
+    color: #080808;
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.auth-switch {
+    color: #888;
+    font-size: 11px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.auth-switch a {
+    color: var(--gold);
+    font-weight: bold;
+}
+
+.form-message {
+    min-height: 18px;
+    margin-top: 12px;
+    font-size: 11px;
+}
+
+.form-message.error {
+    color: var(--danger);
+}
+
+.form-message.success {
+    color: var(--success);
+        }
+}
+    
