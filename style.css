@@ -850,6 +850,172 @@ footer {
 
 .form-message.success {
     color: var(--success);
-        }
+}
+    /* =========================
+   WALLET
+========================= */
+
+.wallet-page {
+    max-width: 700px;
+    margin: auto;
+    padding: 30px 18px 100px;
+}
+
+.page-title > span {
+    color: var(--gold);
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.page-title h1 {
+    font-size: 30px;
+    margin-top: 5px;
+}
+
+.wallet-balance {
+    margin-top: 25px;
+    padding: 24px 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #25200e, #111);
+    border: 1px solid rgba(245,197,66,.3);
+}
+
+.wallet-balance small {
+    display: block;
+    color: #999;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.wallet-balance strong {
+    display: block;
+    color: var(--gold);
+    font-size: 22px;
+    margin-top: 8px;
+}
+
+.wallet-section {
+    margin-top: 35px;
+}
+
+.wallet-section-title {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.wallet-section-title > span {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.wallet-section-title h2 {
+    font-size: 19px;
+}
+
+.wallet-section-title p {
+    color: var(--muted);
+    font-size: 10px;
+    margin-top: 4px;
+}
+
+.bank-card {
+    padding: 20px;
+    border-radius: 15px;
+    background: #131313;
+    border: 1px solid #292929;
+}
+
+.bank-header {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #292929;
+}
+
+.bank-header span {
+    color: #777;
+    font-size: 9px;
+    letter-spacing: 1px;
+}
+
+.bank-header b {
+    color: var(--gold);
+    font-size: 11px;
+}
+
+.bank-detail {
+    margin-top: 18px;
+}
+
+.bank-detail small {
+    display: block;
+    color: #777;
+    font-size: 9px;
+}
+
+.bank-detail strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.account-number {
+    color: var(--gold);
+    font-size: 21px !important;
+    letter-spacing: 1px;
+}
+
+.bank-warning {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #211d0e;
+    color: #c5ae62;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.withdraw-form {
+    padding: 20px;
+    background: #131313;
+    border: 1px solid #292929;
+    border-radius: 15px;
+}
+
+.withdraw-form label {
+    display: block;
+    color: #bbb;
+    font-size: 10px;
+    margin: 14px 0 7px;
+}
+
+.withdraw-form input {
+    width: 100%;
+    height: 47px;
+    padding: 0 13px;
+    background: #080808;
+    border: 1px solid #303030;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+.withdraw-form input:focus {
+    border-color: var(--gold);
+}
+
+.withdraw-note {
+    color: #777;
+    font-size: 10px;
+    line-height: 1.5;
+    margin-top: 14px;
+}
 }
     
