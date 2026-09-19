@@ -3,17 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050505">
   <title>Cash Hall</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="container">
-    <h1>CASH HALL</h1>
-    <p>Welcome to Nigeria's Coin Gaming Platform.</p>
 
-    <button id="startBtn">Start Playing</button>
-  </div>
+<body>
+
+  <!-- SPLASH SCREEN -->
+  <section id="splashScreen" class="screen splash-screen">
+    <div class="logo-ring">
+      <div class="logo">CH</div>
+    </div>
+
+    <h1>CASH HALL</h1>
+    <p>PLAY • WIN • WITHDRAW</p>
+
+    <div class="loading-box">
+      <div id="loadingBar"></div>
+    </div>
+  </section>
+
+
+  <!-- LANDING PAGE -->
+  <section id="landingScreen" class="screen landing-screen hidden">
+
+    <header class="topbar">
+      <div class="brand">CASH<span>HALL</span></div>
+      <button id="musicBtn" class="icon-btn">🔊</button>
+    </header>
+
+    <main class="landing-content">
+
+      <div class="crown">♛</div>
+
+      <p class="small-title">WELCOME TO</p>
+
+      <h1>
+        THE <span>CASH HALL</span>
+      </h1>
+
+      <p class="description">
+        Play exciting games, win coins and enjoy the Cash Hall experience.
+      </p>
+
+      <div class="jackpot-card">
+        <p>LIVE JACKPOT</p>
+        <h2 id="jackpot">₦1,250,000</h2>
+        <span>● LIVE</span>
+      </div>
+
+      <button id="startBtn" class="gold-btn">
+        START PLAYING
+      </button>
+
+      <button id="loginBtn" class="text-btn">
+        Already have an account? Login
+      </button>
+
+    </main>
+
+    <div class="winners">
+      <div class="winner-title">🏆 LIVE WINNERS</div>
+
+      <div id="winnerList">
+        <div>0803****21 won 2,500 coins</div>
+        <div>0706****88 won 5,000 coins</div>
+        <div>0812****43 won 1,500 coins</div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- AUTHENTICATION -->
+  <section id="authScreen" class="screen auth-screen hidden">
+
+    <div class="auth-card">
+
+      <div class="brand auth-brand">
+        CASH<span>HALL</span>
+      </div>
+
+      <div class="auth-tabs">
+        <button id="loginTab" class="active">LOGIN</button>
+        <button id="registerTab">REGISTER</button>
+      </div>
+
+
+      <!-- LOGIN -->
+      <form id="loginForm">
+
+        <h2>Welcome Back</h2>
+        <p>Login to your Cash Hall account.</p>
+
+        <label>Phone Number</label>
+        <input
+          type="tel"
+          id="loginPhone"
+          placeholder="08012345678"
+          maxlength="11"
+          required
+        >
+
+        <label>Password</label>
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Enter password"
+          required
+        >
+
+        <button type="submit" class="gold-btn">
+          LOGIN
+        </button>
+
+        <div id="loginMessage" class="message"></div>
+
+      </form>
+
+
+      <!-- REGISTER -->
+      <form id="registerForm" class="hidden">
+
+        <h2>Create Account</h2>
+        <p>Join Cash Hall today.</p>
+
+        <label>Username</label>
+        <input
+          type="text"
+          id="registerUsername"
+          placeholder="Choose a username"
+          maxlength="20"
+          required
+        >
+
+        <label>Phone Number</label>
+        <input
+          type="tel"
+          id="registerPhone"
+          placeholder="08012345678"
+          maxlength="11"
+          required
+        >
+
+        <label>Password</label>
+        <input
+          type="password"
+          id="registerPassword"
+          placeholder="Create password"
+          required
+        >
+
+        <label>Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Confirm password"
+          required
+        >
+
+        <button type="submit" class="gold-btn">
+          CREATE ACCOUNT
+        </button>
+
+        <div id="registerMessage" class="message"></div>
+
+      </form>
+
+      <button id="backHomeBtn" class="back-btn">
+        ← Back
+      </button>
+
+    </div>
+
+  </section>
+
 
   <script src="app.js"></script>
+
 </body>
-</html>
+          </html>
