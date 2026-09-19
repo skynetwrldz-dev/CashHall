@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070707">
+    <title>Cash Hall — Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="app-header">
+    <a href="landing.html" class="app-logo">
+        ₦ <span>CASH HALL</span>
+    </a>
+
+    <button class="logout-btn" onclick="logout()">LOGOUT</button>
+</header>
+
+<main class="dashboard">
+
+    <section class="welcome">
+        <p>WELCOME BACK</p>
+        <h1 id="usernameDisplay">Player</h1>
+    </section>
+
+    <section class="balance-card">
+        <div>
+            <small>COIN BALANCE</small>
+            <strong id="coinBalance">0 🪙</strong>
+        </div>
+
+        <div>
+            <small>WITHDRAWABLE</small>
+            <strong id="withdrawBalance">0 🪙</strong>
+        </div>
+    </section>
+
+    <section class="dashboard-actions">
+
+        <a href="wallet.html" class="dashboard-card">
+            <span>💰</span>
+            <div>
+                <b>Wallet</b>
+                <small>Deposit & withdrawals</small>
+            </div>
+            <strong>›</strong>
+        </a>
+
+        <a href="profile.html" class="dashboard-card">
+            <span>👤</span>
+            <div>
+                <b>Profile</b>
+                <small>Your account statistics</small>
+            </div>
+            <strong>›</strong>
+        </a>
+
+    </section>
+
+    <section class="dashboard-games">
+
+        <div class="section-heading">
+            <span>GAMES</span>
+            <h2>Choose a Game</h2>
+        </div>
+
+        <div class="dashboard-game-grid">
+
+            <a href="lucky200.html" class="dashboard-game">
+                <div class="big-game-icon">🎯</div>
+                <h3>Lucky 200</h3>
+                <p>Pick a number from 1–200.</p>
+                <span>PLAY →</span>
+            </a>
+
+            <a href="cards.html" class="dashboard-game">
+                <div class="big-game-icon">🃏</div>
+                <h3>Card Shuffle</h3>
+                <p>Find the winning card.</p>
+                <span>PLAY →</span>
+            </a>
+
+            <a href="whot/whot.html" class="dashboard-game">
+                <div class="big-game-icon">♠</div>
+                <h3>Naija Whot</h3>
+                <p>Challenge the computer.</p>
+                <span>PLAY →</span>
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+<nav class="bottom-nav">
+    <a href="home.html" class="active">
+        <span>⌂</span>
+        Home
+    </a>
+
+    <a href="wallet.html">
+        <span>₦</span>
+        Wallet
+    </a>
+
+    <a href="profile.html">
+        <span>●</span>
+        Profile
+    </a>
+</nav>
+
+<script src="app.js"></script>
+
+</body>
+</html>
