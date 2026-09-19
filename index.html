@@ -3,51 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#080808">
+    <meta name="theme-color" content="#070707">
+
     <title>Cash Hall</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="splash-body">
 
     <main class="splash-screen">
+
         <div class="logo-orbit">
             <div class="logo-coin">₦</div>
         </div>
 
-        <h1 class="brand-title">CASH <span>HALL</span></h1>
-        <p class="brand-subtitle">PLAY • WIN • WITHDRAW</p>
+        <h1 class="brand-title">
+            CASH <span>HALL</span>
+        </h1>
+
+        <p class="brand-subtitle">
+            PLAY • WIN • WITHDRAW
+        </p>
 
         <div class="loading-container">
+
             <div class="loading-bar">
                 <div id="loadingProgress"></div>
             </div>
-            <p id="loadingText">Loading Cash Hall...</p>
+
+            <p id="loadingText">
+                Loading Cash Hall...
+            </p>
+
         </div>
+
     </main>
 
+
     <script>
+
         let progress = 0;
-        const bar = document.getElementById("loadingProgress");
-        const text = document.getElementById("loadingText");
 
-        const timer = setInterval(() => {
-            progress += Math.floor(Math.random() * 8) + 4;
+        const progressBar =
+            document.getElementById("loadingProgress");
 
-            if (progress >= 100) {
-                progress = 100;
-                clearInterval(timer);
-            }
+        const loadingText =
+            document.getElementById("loadingText");
 
-            bar.style.width = progress + "%";
 
-            if (progress < 35) {
-                text.textContent = "Preparing Cash Hall...";
-            } else if (progress < 70) {
-                text.textContent = "Loading games...";
-            } else if (progress < 100) {
-                text.textContent = "Almost ready...";
-            } else {
-                text.textContent = "Welcome to Cash Hall";
-                setTimeout(() => {
-                    window.location.href = "landing
+        function startLoading() {
+
+            const loading = setInterval(function () {
+
+                progress += 5;
+
+                if (progress > 100) {
+                    progress = 100;
+                }
+
+                progressBar.style.width =
+                    progress + "%";
+
+
+                if (progress < 30) {
+
+                    loadingText.textContent =
+                        "Preparing Cash Hall...";
+
+                } else if (progress < 60) {
+
+                    loadingText.textContent =
+                        "Loading games...";
+
+                } else if (progress < 90) {
+
+                    loadingText.textContent =
+                        "Setting up your hall...";
+
+                } else if (progress < 100) {
+
+                    loadingText.textContent =
+                        "Almost ready...";
+
+                } else {
+
+                    loadingText.textContent =
+                        "Welcome to Cash Hall!";
+
+                    clearInterval(loading);
+
+                    setTimeout(function () {
+
+                        window.location.replace(
+                            "landing.html"
+                        );
+
+                    }, 800);
+                }
+
+            }, 150);
+
+        }
+
+
+        window.addEventListener(
+            "load",
+            startLoading
+        );
+
+    </script>
+
+</body>
+</html>
