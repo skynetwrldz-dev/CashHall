@@ -206,6 +206,119 @@ function updateDashboard() {
 }
 
 
+
+/* =========================
+   WALLET
+========================= */
+
+function updateWallet() {
+    const user = requireLogin();
+
+    if (!user) return;
+
+    const coins = document.getElementById("walletCoins");
+    const withdrawable =
+        document.getElementById("walletWithdrawable");
+
+    if (coins) {
+        coins.textContent = `${user.coins} 🪙`;
+    }
+
+    if (withdrawable) {
+        withdrawable.textContent =
+            `${user.withdrawableCoins} 🪙`;
+    }
+
+    const nameInput =
+        document.getElementById("withdrawName");
+
+    if (nameInput) {
+        nameInput.value = user.username;
+    }
+}
+
+/* =========================
+   WITHDRAWAL REQUEST
+========================= */
+
+function requestWithdrawal(event) {
+    event.preventDefault();
+
+    const user = requireLogin();
+
+    if (!user) return;
+
+    const name =
+        document.getElementById("withdrawName").value.trim();
+
+    const account =
+        document.getElementById("withdrawAccount").value.trim();
+
+    const amount =
+        Number(document.getElementById("withdrawAmount").value);
+
+    const message =
+        document.getElementById("withdrawMessage");
+
+    message.className = "form-message";
+
+    if (!name) {
+        message.textContent = "Enter your account name.";
+        message.classList.add("error");
+        return;
+    }
+
+    if (!/^\d{10}$/.test(account)) {
+        message.textContent =
+            "Enter a valid 10-digit account number.";
+        message.classList.add("error");
+        return;
+    }
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+        message.textContent =
+            "Enter a valid withdrawal amount.";
+        message.classList.add("error");
+        return;
+    }
+
+    if (amount > user.withdrawableCoins) {
+        message.textContent =
+            "Insufficient withdrawable coins.";
+        message.classList.add("error");
+        return;
+    }
+
+    const requests =
+        JSON.parse(
+            localStorage.getItem("cashHallWithdrawals") || "[]"
+        );
+
+    requests.push({
+        id: Date.now(),
+        phone: user.phone,
+        username: user.username,
+        accountName: name,
+        accountNumber: account,
+        amount: amount,
+        status: "pending",
+        createdAt: new Date().toISOString()
+    });
+
+    localStorage.setItem(
+        "cashHallWithdrawals",
+        JSON.stringify(requests)
+    );
+
+    message.textContent =
+        "Withdrawal request submitted.";
+
+    message.classList.add("success");
+
+    document.getElementById("withdrawAmount").value = "";
+}
+
+
 /* =========================
    PAGE INITIALIZATION
 ========================= */
@@ -217,6 +330,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const loginForm =
         document.getElementById("loginForm");
+
+    const withdrawForm =
+        document.getElementById("withdrawForm");
 
     if (registerForm) {
         registerForm.addEventListener(
@@ -236,4 +352,17 @@ document.addEventListener("DOMContentLoaded", () => {
         updateDashboard();
     }
 
+    if (document.getElementById("walletCoins")) {
+        updateWallet();
+    }
+
+    if (withdrawForm) {
+        withdrawForm.addEventListener(
+            "submit",
+            requestWithdrawal
+        );
+    }
+
 });
+
+
