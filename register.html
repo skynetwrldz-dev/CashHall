@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070707">
+    <title>Cash Hall — Register</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="auth-page">
+
+    <a href="landing.html" class="auth-logo">
+        ₦ <span>CASH HALL</span>
+    </a>
+
+    <section class="auth-card">
+
+        <div class="auth-heading">
+            <span>WELCOME</span>
+            <h1>Create Account</h1>
+            <p>Join Cash Hall and enter the game.</p>
+        </div>
+
+        <form id="registerForm">
+
+            <label>Username</label>
+            <input
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                minlength="3"
+                maxlength="20"
+                required
+            >
+
+            <label>Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                placeholder="08012345678"
+                maxlength="11"
+                inputmode="numeric"
+                required
+            >
+
+            <label>Password</label>
+            <input
+                type="password"
+                id="password"
+                placeholder="Create password"
+                minlength="6"
+                required
+            >
+
+            <label>Confirm Password</label>
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm password"
+                minlength="6"
+                required
+            >
+
+            <p id="registerMessage" class="form-message"></p>
+
+            <button type="submit" class="auth-button">
+                CREATE ACCOUNT
+            </button>
+
+        </form>
+
+        <p class="auth-switch">
+            Already have an account?
+            <a href="login.html">Login</a>
+        </p>
+
+    </section>
+
+</main>
+
+<script src="app.js"></script>
+
+</body>
+</html>
