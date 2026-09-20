@@ -191,3 +191,70 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("walletCoins")) updateWallet();
   if (document.getElementById("profileName")) updateProfile();
 });
+/* ===== LUCKY 200 GAME (2X LUCK SYSTEM) ===== */
+
+function playLucky200() {
+  const user = requireLogin();
+  if (!user) return;
+
+  const stake = Number(document.getElementById("stake").value);
+  const chosen = Number(document.getElementById("chosenNumber").value);
+  const result = document.getElementById("luckyResult");
+  const wheel = document.getElementById("wheel");
+
+  if (stake < 500) {
+    result.textContent = "Minimum stake is 500 coins.";
+    return;
+  }
+
+  if (chosen < 1 || chosen > 200) {
+    result.textContent = "Choose a number between 1 and 200.";
+    return;
+  }
+
+  if (user.coins < stake) {
+    result.textContent = "Not enough coins.";
+    return;
+  }
+
+  // Deduct stake immediately
+  user.coins -= stake;
+  result.textContent = "";
+  wheel.textContent = "🎰";
+
+  let spins = 0;
+
+  const spinAnimation = setInterval(() => {
+    wheel.textContent = Math.floor(Math.random() * 200) + 1;
+    spins++;
+
+    if (spins >= 25) {
+      clearInterval(spinAnimation);
+
+      const luckyNumber = Math.floor(Math.random() * 200) + 1;
+      wheel.textContent = luckyNumber;
+
+      user.gamesPlayed++;
+
+      if (luckyNumber === chosen) {
+        const winnings = stake * 2;
+
+        user.coins += winnings;
+        user.withdrawableCoins += winnings;
+        user.wins++;
+
+        result.textContent = `🎉 Correct! Number ${luckyNumber}. You won ${winnings} coins.`;
+      } else {
+        user.losses++;
+
+        result.textContent = `❌ Wrong! Lucky number was ${luckyNumber}. You lost ${stake} coins.`;
+      }
+
+      const users = getUsers();
+      users[user.phone] = user;
+      saveUsers(users);
+
+      document.getElementById("gameCoins").textContent = user.coins + " 🪙";
+    }
+  }, 100);
+}
