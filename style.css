@@ -1017,5 +1017,24 @@ footer {
     line-height: 1.5;
     margin-top: 14px;
 }
+    .card-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.shuffle-card{
+  background:#222;
+  border:2px solid gold;
+  color:gold;
+  border-radius:10px;
+  height:70px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:28px;
+  font-weight:bold;
+}
 }
     
