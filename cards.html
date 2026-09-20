@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Card Shuffle - Cash Hall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <a href="home.html" class="app-logo">₦ CASH HALL</a>
+</header>
+
+<main class="wallet-page">
+  <div class="page-title">
+    <span>CARD SHUFFLE</span>
+    <h1>Pick One Card</h1>
+  </div>
+
+  <div class="wallet-balance">
+    <div><small>YOUR COINS</small><strong id="cardCoins">0 🪙</strong></div>
+  </div>
+
+  <div class="withdraw-form">
+    <label>Stake (Minimum 500 Coins)</label>
+    <input type="number" id="cardStake" placeholder="500">
+
+    <button class="auth-button" onclick="startCardShuffle()">START SHUFFLE</button>
+
+    <div id="cardGrid" class="card-grid"></div>
+
+    <p id="cardResult" class="form-message"></p>
+  </div>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
