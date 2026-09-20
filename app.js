@@ -1,12 +1,9 @@
-/* =========================
-   CASH HALL APP.JS
-========================= */
+/* ================= CASH HALL APP.JS ================= */
 
-const CURRENT_USER_KEY = "cashHallCurrentUser";
 const USERS_KEY = "cashHallUsers";
+const CURRENT_USER_KEY = "cashHallCurrentUser";
 
-/* ---------- USERS ---------- */
-
+/* ---------- STORAGE ---------- */
 function getUsers() {
   return JSON.parse(localStorage.getItem(USERS_KEY) || "{}");
 }
@@ -24,7 +21,7 @@ function getCurrentUser() {
 function requireLogin() {
   const user = getCurrentUser();
   if (!user) {
-    window.location.href = "landing.html";
+    window.location.href = "login.html";
     return null;
   }
   return user;
@@ -36,11 +33,10 @@ function logout() {
 }
 
 /* ---------- REGISTER ---------- */
-
 function registerUser(e) {
   e.preventDefault();
 
-  const username = username.value.trim();
+  const username = document.getElementById("username").value.trim();
   const phone = document.getElementById("phone").value.trim();
   const password = document.getElementById("password").value;
   const confirm = document.getElementById("confirmPassword").value;
@@ -75,7 +71,6 @@ function registerUser(e) {
 }
 
 /* ---------- LOGIN ---------- */
-
 function loginUser(e) {
   e.preventDefault();
 
@@ -95,7 +90,6 @@ function loginUser(e) {
 }
 
 /* ---------- DASHBOARD ---------- */
-
 function updateDashboard() {
   const user = requireLogin();
   if (!user) return;
@@ -107,7 +101,6 @@ function updateDashboard() {
 }
 
 /* ---------- WALLET ---------- */
-
 function updateWallet() {
   const user = requireLogin();
   if (!user) return;
@@ -120,48 +113,7 @@ function updateWallet() {
   if (nameInput) nameInput.value = user.username;
 }
 
-/* ---------- WITHDRAW ---------- */
-
-function requestWithdrawal(e) {
-  e.preventDefault();
-
-  const user = requireLogin();
-  if (!user) return;
-
-  const requests = JSON.parse(
-    localStorage.getItem("cashHallWithdrawals") || "[]"
-  );
-
-  const amount = Number(document.getElementById("withdrawAmount").value);
-
-  if (amount > user.withdrawableCoins) {
-    document.getElementById("withdrawMessage").textContent =
-      "Insufficient withdrawable coins.";
-    return;
-  }
-
-  requests.push({
-    phone: user.phone,
-    username: user.username,
-    accountName: document.getElementById("withdrawName").value,
-    accountNumber: document.getElementById("withdrawAccount").value,
-    amount,
-    status: "Pending"
-  });
-
-  localStorage.setItem(
-    "cashHallWithdrawals",
-    JSON.stringify(requests)
-  );
-
-  document.getElementById("withdrawMessage").textContent =
-    "Withdrawal request submitted.";
-
-  document.getElementById("withdrawAmount").value = "";
-}
-
 /* ---------- PROFILE ---------- */
-
 function updateProfile() {
   const user = requireLogin();
   if (!user) return;
@@ -176,23 +128,7 @@ function updateProfile() {
   document.getElementById("profileLosses").textContent = user.losses;
 }
 
-/* ---------- PAGE LOAD ---------- */
-
-document.addEventListener("DOMContentLoaded", () => {
-  const registerForm = document.getElementById("registerForm");
-  const loginForm = document.getElementById("loginForm");
-  const withdrawForm = document.getElementById("withdrawForm");
-
-  if (registerForm) registerForm.addEventListener("submit", registerUser);
-  if (loginForm) loginForm.addEventListener("submit", loginUser);
-  if (withdrawForm) withdrawForm.addEventListener("submit", requestWithdrawal);
-
-  if (document.getElementById("usernameDisplay")) updateDashboard();
-  if (document.getElementById("walletCoins")) updateWallet();
-  if (document.getElementById("profileName")) updateProfile();
-});
-/* ===== LUCKY 200 GAME (2X LUCK SYSTEM) ===== */
-
+/* ---------- LUCKY 200 GAME ---------- */
 function playLucky200() {
   const user = requireLogin();
   if (!user) return;
@@ -217,19 +153,16 @@ function playLucky200() {
     return;
   }
 
-  // Deduct stake immediately
   user.coins -= stake;
-  result.textContent = "";
-  wheel.textContent = "🎰";
+  document.getElementById("gameCoins").textContent = user.coins + " 🪙";
 
   let spins = 0;
-
-  const spinAnimation = setInterval(() => {
+  const animation = setInterval(() => {
     wheel.textContent = Math.floor(Math.random() * 200) + 1;
     spins++;
 
     if (spins >= 25) {
-      clearInterval(spinAnimation);
+      clearInterval(animation);
 
       const luckyNumber = Math.floor(Math.random() * 200) + 1;
       wheel.textContent = luckyNumber;
@@ -237,17 +170,14 @@ function playLucky200() {
       user.gamesPlayed++;
 
       if (luckyNumber === chosen) {
-        const winnings = stake * 2;
-
-        user.coins += winnings;
-        user.withdrawableCoins += winnings;
+        const win = stake * 2;
+        user.coins += win;
+        user.withdrawableCoins += win;
         user.wins++;
-
-        result.textContent = `🎉 Correct! Number ${luckyNumber}. You won ${winnings} coins.`;
+        result.textContent = `🎉 Correct! You won ${win} coins.`;
       } else {
         user.losses++;
-
-        result.textContent = `❌ Wrong! Lucky number was ${luckyNumber}. You lost ${stake} coins.`;
+        result.textContent = `❌ Wrong! Lucky number was ${luckyNumber}.`;
       }
 
       const users = getUsers();
@@ -258,3 +188,19 @@ function playLucky200() {
     }
   }, 100);
 }
+
+/* Make Lucky200 callable from HTML button */
+window.playLucky200 = playLucky200;
+
+/* ---------- PAGE LOAD ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  const registerForm = document.getElementById("registerForm");
+  const loginForm = document.getElementById("loginForm");
+
+  if (registerForm) registerForm.addEventListener("submit", registerUser);
+  if (loginForm) loginForm.addEventListener("submit", loginUser);
+
+  if (document.getElementById("usernameDisplay")) updateDashboard();
+  if (document.getElementById("walletCoins")) updateWallet();
+  if (document.getElementById("profileName")) updateProfile();
+});
