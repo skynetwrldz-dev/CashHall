@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucky 200 - Cash Hall</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <a href="home.html" class="app-logo">₦ CASH HALL</a>
+</header>
+
+<main class="wallet-page">
+
+  <div class="page-title">
+    <span>LUCKY GAME</span>
+    <h1>Lucky 200</h1>
+  </div>
+
+  <div class="wallet-balance">
+    <div>
+      <small>YOUR COINS</small>
+      <strong id="gameCoins">0 🪙</strong>
+    </div>
+  </div>
+
+  <div class="withdraw-form">
+    <label>Stake (Minimum 500 Coins)</label>
+    <input type="number" id="stake" placeholder="500">
+
+    <label>Choose Number (1-200)</label>
+    <input type="number" id="chosenNumber" min="1" max="200" placeholder="Enter lucky number">
+
+    <button class="auth-button" onclick="playLucky200()">
+      SPIN & PLAY
+    </button>
+
+    <div id="wheel" style="font-size:55px;text-align:center;margin:20px;">🎰</div>
+
+    <p id="luckyResult" class="form-message"></p>
+  </div>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
