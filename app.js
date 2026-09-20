@@ -362,6 +362,22 @@ document.addEventListener("DOMContentLoaded", () => {
             requestWithdrawal
         );
     }
+   function updateProfile() {
+  const user = requireLogin();
+  if (!user) return;
+
+  document.getElementById("profileName").textContent = user.username;
+  document.getElementById("profilePhone").textContent = user.phone;
+  document.getElementById("profileCoins").textContent = user.coins + " 🪙";
+  document.getElementById("profileWithdraw").textContent = user.withdrawableCoins + " 🪙";
+  document.getElementById("profileGames").textContent = user.gamesPlayed;
+  document.getElementById("profileWins").textContent = user.wins;
+  document.getElementById("profileLosses").textContent = user.losses;
+}
+
+if (document.getElementById("profileName")) {
+  updateProfile();
+}
 
 });
 
