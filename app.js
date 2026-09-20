@@ -203,4 +203,115 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("usernameDisplay")) updateDashboard();
   if (document.getElementById("walletCoins")) updateWallet();
   if (document.getElementById("profileName")) updateProfile();
+}
+  /* ========= CARD SHUFFLE GAME ========= */
+
+let winningCard = -1;
+let cardStake = 0;
+let gameStarted = false;
+
+function startCardShuffle() {
+  const user = requireLogin();
+  if (!user) return;
+
+  cardStake = Number(document.getElementById("cardStake").value);
+  const result = document.getElementById("cardResult");
+  const grid = document.getElementById("cardGrid");
+
+  if (cardStake < 500) {
+    result.textContent = "Minimum stake is 500 coins.";
+    return;
+  }
+
+  if (user.coins < cardStake) {
+    result.textContent = "Not enough coins.";
+    return;
+  }
+
+  user.coins -= cardStake;
+  const users = getUsers();
+  users[user.phone] = user;
+  saveUsers(users);
+
+  document.getElementById("cardCoins").textContent = user.coins + " 🪙";
+  result.textContent = "Shuffling cards...";
+
+  winningCard = Math.floor(Math.random() * 16);
+  gameStarted = false;
+  grid.innerHTML = "";
+
+  // Show 16 face-down cards
+  for (let i = 0; i < 16; i++) {
+    const card = document.createElement("div");
+    card.className = "shuffle-card";
+    card.textContent = "🂠";
+    grid.appendChild(card);
+  }
+
+  // Shuffle animation for 3 seconds
+  let count = 0;
+  const shuffle = setInterval(() => {
+    grid.querySelectorAll(".shuffle-card").forEach(card => {
+      card.textContent = Math.random() > 0.5 ? "🂠" : "🃏";
+    });
+
+    count++;
+
+    if (count >= 15) {
+      clearInterval(shuffle);
+
+      grid.querySelectorAll(".shuffle-card").forEach((card, index) => {
+        card.textContent = "🂠";
+        card.onclick = () => pickCard(index);
+      });
+
+      gameStarted = true;
+      result.textContent = "Pick one card!";
+    }
+  }, 200);
+}
+
+function pickCard(index) {
+  if (!gameStarted) return;
+
+  const user = requireLogin();
+  if (!user) return;
+
+  const cards = document.querySelectorAll(".shuffle-card");
+  const result = document.getElementById("cardResult");
+
+  gameStarted = false;
+  user.gamesPlayed++;
+
+  cards[winningCard].textContent = "💎";
+
+  if (index === winningCard) {
+    const win = cardStake * 2;
+    user.coins += win;
+    user.withdrawableCoins += win;
+    user.wins++;
+    result.textContent = `🎉 You found the winning card! +${win} coins`;
+  } else {
+    cards[index].textContent = "❌";
+    user.losses++;
+    result.textContent = "❌ Wrong card. You lost.";
+  }
+
+  const users = getUsers();
+  users[user.phone] = user;
+  saveUsers(users);
+
+  document.getElementById("cardCoins").textContent = user.coins + " 🪙";
+
+  cards.forEach(card => card.onclick = null);
+}
+
+/* Show coin balance when cards page opens */
+document.addEventListener("DOMContentLoaded", () => {
+  const user = getCurrentUser();
+  if (user && document.getElementById("cardCoins")) {
+    document.getElementById("cardCoins").textContent = user.coins + " 🪙";
+  }
 });
+
+window.startCardShuffle = startCardShuffle;
